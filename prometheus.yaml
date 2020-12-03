@@ -31,6 +31,23 @@ data:
         index.number_of_shards: 5
         index.number_of_replicas: 1
         index.number_of_routing_shards: 30
+        
+---------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: metricbeat-modules
+  namespace: monitoring
+  labels:
+    k8s-app: metricbeat
+data:
+  kubernetes.yml: |-
+    - module: prometheus
+      period: 10s
+      hosts: ["10.108.222.135:8080"]
+      metrics_path: '/federate'
+      query:
+        'match[]': '{__name__!=""}'
 
 ---------
 
