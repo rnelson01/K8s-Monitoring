@@ -33,6 +33,7 @@ data:
         index.number_of_routing_shards: 30
         
 ---------
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
